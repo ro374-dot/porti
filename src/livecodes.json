@@ -1,0 +1,34 @@
+{
+  "title": "Untitled Project (fork)",
+  "description": "",
+  "head": "<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+  "htmlAttrs": "lang=\"en\" class=\"\"",
+  "tags": [
+    ""
+  ],
+  "activeEditor": "markup",
+  "markup": {
+    "language": "html",
+    "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n<meta charset=\"UTF-8\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n<title>Rudy Ochoa - Personal Portfolio</title>\r\n<style>\r\n  body {\r\n    font-family: Arial, sans-serif;\r\n    line-height: 1.6;\r\n    margin: 20px;\r\n    background-color: #f9f9f9;\r\n    color: #333;\r\n  }\r\n  header {\r\n    text-align: center;\r\n    margin-bottom: 30px;\r\n  }\r\n  h1 {\r\n    font-size: 2.5em;\r\n    margin-bottom: 0.2em;\r\n  }\r\n  h2 {\r\n    font-size: 1.8em;\r\n    color: #555;\r\n  }\r\n  section {\r\n    margin-bottom: 30px;\r\n  }\r\n  .skills, .projects, .education, .contact, .resume, .intro-video {\r\n    background-color: #fff;\r\n    padding: 15px;\r\n    border-radius: 8px;\r\n    box-shadow: 0 0 10px rgba(0,0,0,0.1);\r\n  }\r\n  table {\r\n    width: 100%;\r\n    border-collapse: collapse;\r\n    margin-top: 10px;\r\n  }\r\n  th, td {\r\n    border: 1px solid #aaa;\r\n    padding: 8px;\r\n    text-align: left;\r\n  }\r\n  th {\r\n    background-color: #eee;\r\n  }\r\n  ul {\r\n    list-style-type: disc;\r\n    padding-left: 20px;\r\n  }\r\n  h3 {\r\n    margin-top: 0;\r\n  }\r\n  .project img {\r\n    max-width: 100%;\r\n    height: auto;\r\n    display: block;\r\n    margin-top: 10px;\r\n  }\r\n  footer {\r\n    text-align: center;\r\n    font-size: 0.9em;\r\n    color: #777;\r\n    margin-top: 40px;\r\n  }\r\n</style>\r\n</head>\r\n<body>\r\n\r\n<header>\r\n  <h1>Rudy Ochoa</h1>\r\n  <h2>Personal Portfolio</h2>\r\n</header>\r\n\r\n<section class=\"introduction\">\r\n  <h3>Introduction</h3>\r\n  <p>\r\n    Hi! My Name is Rodolfo Ochoa but I go by Rudy for short. I currently live in Lake Havasu and I'm majoring in cybersecurity. I'm currently working at a doctor's office, but in my free time, I like to draw and play games with my friends. I also own two cats.\r\n  </p>\r\n</section>\r\n\r\n<!-- Step 2: Skills with categorized lists -->\r\n<section class=\"skills\">\r\n  <h3>Skills</h3>\r\n  <h4>Technical Skills</h4>\r\n  <ul>\r\n    <li>Cybersecurity</li>\r\n    <li>Modeling</li>\r\n    <li>Texturing</li>\r\n    <li>Game Development</li>\r\n  </ul>\r\n  <h4>Creative Skills</h4>\r\n  <ul>\r\n    <li>Drawing</li>\r\n    <li>3D Modeling</li>\r\n  </ul>\r\n  <h4>Interpersonal Skills</h4>\r\n  <ul>\r\n    <li>Teamwork</li>\r\n    <li>Communication</li>\r\n  </ul>\r\n</section>\r\n\r\n<!-- Step 1: Education and Experience with HTML Table -->\r\n<section class=\"education\">\r\n  <h3>Education and Experience</h3>\r\n  <table>\r\n    <tr>\r\n      <th>Institution / Company</th>\r\n      <th>Position / Degree</th>\r\n      <th>Duration</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Local Government IT Department</td>\r\n      <td>Intern</td>\r\n      <td>Junior Year of High School</td>\r\n    </tr>\r\n    <tr>\r\n      <td>Northern Arizona University (NAU)</td>\r\n      <td>Student (Cybersecurity)</td>\r\n      <td>Starting 3rd Year</td>\r\n    </tr>\r\n  </table>\r\n</section>\r\n\r\n<!-- Step 3: Projects with images -->\r\n<section class=\"projects\">\r\n  <h3>Projects Showcase</h3>\r\n  <div class=\"project\">\r\n    <h4>Animal Crossing Model</h4>\r\n    <p>I do some modeling for fun and I've been adjusting an old Animal Crossing model with different texturing and items.</p>\r\n    <!-- Replace src with your actual image paths -->\r\n    <img src=\"images/animal_crossing1.jpg\" alt=\"Animal Crossing Model Screenshot 1\" />\r\n    <p>Modeling and texturing of Animal Crossing character.</p>\r\n    <img src=\"images/animal_crossing2.jpg\" alt=\"Animal Crossing Model Textured\" />\r\n    <p>Adjusted with different textures and items.</p>\r\n  </div>\r\n  <div class=\"project\">\r\n    <h4>Game Development</h4>\r\n    <p>I was working on a game, but I stopped after my files got corrupted.</p>\r\n    <img src=\"images/game_dev1.jpg\" alt=\"Game Prototype Screenshot\" />\r\n    <p>Early prototype of my game project.</p>\r\n    <img src=\"images/game_dev2.jpg\" alt=\"Game Assets\" />\r\n    <p>Design sketches and assets.</p>\r\n  </div>\r\n</section>\r\n\r\n<!-- Step 4: Contact info with hyperlinks -->\r\n<section class=\"contact\">\r\n  <h3>Contact Information</h3>\r\n  <p>\r\n    <strong>Gmail (Personal):</strong> <a href=\"mailto:ochoarudy02@gmail.com\">ochoarudy02@gmail.com</a><br>\r\n    <strong>Nau Gmail:</strong> <a href=\"mailto:Ro374@nau.edu\">Ro374@nau.edu</a><br>\r\n    <strong>GitHub:</strong> <a href=\"https://github.com/yourusername\" target=\"_blank\">https://github.com/yourusername</a><br>\r\n    <strong>LinkedIn:</strong> <a href=\"https://linkedin.com/in/yourprofile\" target=\"_blank\">https://linkedin.com/in/yourprofile</a>\r\n  </p>\r\n</section>\r\n\r\n<!-- Step 5: Download Resume -->\r\n<section class=\"resume\">\r\n  <h3>Download My Resume</h3>\r\n  <a href=\"https://yourcloudstorage.com/yourresume.pdf\" target=\"_blank\" download>Download Rudy Ochoa's Resume</a>\r\n</section>\r\n\r\n<!-- Step 7: Optional - Embed a Video Introduction -->\r\n<section class=\"intro-video\">\r\n  <h3>About Me</h3>\r\n  <video width=\"320\" height=\"240\" controls>\r\n    <source src=\"videos/intro.mp4\" type=\"video/mp4\" />\r\n    Your browser does not support the video tag.\r\n  </video>\r\n</section>\r\n\r\n<!-- Footer -->\r\n<footer>\r\n  <p>© 2025 Rudy Ochoa</p>\r\n</footer>\r\n\r\n<!-- Scripts if needed -->\r\n<script src=\"./script.js\"></script>\r\n</body>\r\n</html>"
+  },
+  "style": {
+    "language": "css",
+    "content": ""
+  },
+  "script": {
+    "language": "javascript",
+    "content": ""
+  },
+  "stylesheets": [],
+  "scripts": [],
+  "cssPreset": "",
+  "processors": [],
+  "customSettings": {},
+  "imports": {},
+  "types": {},
+  "tests": {
+    "language": "typescript",
+    "content": ""
+  },
+  "version": "46"
+}
