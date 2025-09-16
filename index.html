@@ -1,185 +1,330 @@
 <!DOCTYPE html>
-<html lang="en" class=""><head><script>window.livecodes = window.livecodes || {};</script><title>Untitled Project (fork)</title><meta name="title" content="Untitled Project (fork)"><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="./style.css"><script src="https://cdn.jsdelivr.net/npm/es-module-shims@1.10.0/dist/es-module-shims.js" async=""></script><script type="importmap">{
-  "imports": {}
-}</script></head><body>
-
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" class="">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rudy Ochoa - Personal Portfolio</title>
 <style>
+  /* Overall Body Styles */
   body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 20px;
     background-color: #f9f9f9;
     color: #333;
+    line-height: 1.6;
   }
+
+  /* Grid Layout for the Entire Page */
+  body {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer footer";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+
+  /* Header */
   header {
+    grid-area: header;
+    background-color: #fff;
+    padding: 20px;
     text-align: center;
-    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
-  h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.2em;
+
+  /* Sidebar Navigation */
+  aside.sidebar {
+    grid-area: sidebar;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    position: relative; 
   }
-  h2 {
-    font-size: 1.8em;
-    color: #555;
+
+  /* Navigation Items with Flexbox */
+  nav {
+    display: flex;
+    flex-direction: column;
   }
-  section {
-    margin-bottom: 30px;
+
+  nav a {
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
   }
-  .skills, .projects, .education, .contact, .resume, .intro-video {
+  nav a:hover {
+    background-color: #d0d0d0;
+  }
+
+  /* Download Resume Button - Absolute Position */
+  .download-resume {
+    position: absolute;
+    bottom: 4px;
+    left: 20px;
+    right: 40px;
+  }
+  .download-resume a {
+    display: inline-block;
+    width: 100%;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  .download-resume a:hover {
+    background-color: #0056b3;
+    transform: scale(1.02);
+  }
+
+  /* Main Content */
+ main {
+    grid-area: main;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  /* Footer */
+  footer {
+    grid-area: footer;
     background-color: #fff;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  th, td {
-    border: 1px solid #aaa;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #eee;
-  }
-  ul {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  h3 {
-    margin-top: 0;
-  }
-  .project img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-top: 10px;
-  }
-  footer {
     text-align: center;
     font-size: 0.9em;
     color: #777;
-    margin-top: 40px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   }
+
+  /* Style for Sections */
+section {
+  margin-bottom: 30px;
+}
+
+/* Specific Section Styles with Selectors */
+h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* Style Summary, Education, Experience sections */
+section.education, section.experience, section.introduction {
+  font-family: Arial, sans-serif;
+}
+
+/* Education Table Styling */
+section.education table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+section.education th, section.education td {
+  border: 1px solid #aaa;
+  padding: 8px;
+  text-align: left;
+}
+section.education th {
+  background-color: #eee;
+}
+
+/* Skills Section with Flexbox */
+section.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+section.skills h4 {
+  flex-basis: 100%;
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #555;
+}
+section.skills ul {
+  flex: 1 1 200px;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Projects Section with Grid */
+section.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+.project {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  /* Bonus: Box Shadow for depth */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.project h4 {
+  margin-top: 0;
+}
+.project img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+.project video {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+/* Contact Info with Relative Positioning */
+section.contact {
+  position: relative;
+}
+section.contact p {
+  margin: 0;
+}
+
+/* Optional: Enhance links */
+a {
+  color: #007BFF;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 </style>
-
-
+</head>
+<body>
 
 <header>
   <h1>Rudy Ochoa</h1>
   <h2>Personal Portfolio</h2>
 </header>
 
-<section class="introduction">
-  <h3>Introduction</h3>
-  <p>
-    Hi! My Name is Rodolfo Ochoa but I go by Rudy for short. I currently live in Lake Havasu and I'm majoring in cybersecurity. I'm currently working at a doctor's office, but in my free time, I like to draw and play games with my friends. I also own two cats.
-  </p>
-</section>
-
-<!-- Step 2: Skills with categorized lists -->
-<section class="skills">
-  <h3>Skills</h3>
-  <h4>Technical Skills</h4>
-  <ul>
-    <li>Cybersecurity</li>
-    <li>Modeling</li>
-    <li>Texturing</li>
-    <li>Game Development</li>
-  </ul>
-  <h4>Creative Skills</h4>
-  <ul>
-    <li>Drawing</li>
-    <li>3D Modeling</li>
-  </ul>
-  <h4>Interpersonal Skills</h4>
-  <ul>
-    <li>Teamwork</li>
-    <li>Communication</li>
-  </ul>
-</section>
-
-<!-- Step 1: Education and Experience with HTML Table -->
-<section class="education">
-  <h3>Education and Experience</h3>
-  <table>
-    <tbody><tr>
-      <th>Institution / Company</th>
-      <th>Position / Degree</th>
-      <th>Duration</th>
-    </tr>
-    <tr>
-      <td>Local Government IT Department</td>
-      <td>Intern</td>
-      <td>Junior Year of High School</td>
-    </tr>
-    <tr>
-      <td>Northern Arizona University (NAU)</td>
-      <td>Student (Cybersecurity)</td>
-      <td>Starting 3rd Year</td>
-    </tr>
-  </tbody></table>
-</section>
-
-<!-- Step 3: Projects with images -->
-<section class="projects">
-  <h3>Projects Showcase</h3>
-  <div class="project">
-    <h4>Animal Crossing Model</h4>
-    <p>I do some modeling for fun and I've been adjusting an old Animal Crossing model with different texturing and items.</p>
-    <img width="320" height="240" controls="" src="IMG_1268.png" alt="Animal Crossing Model Textured">
+<aside class="sidebar">
+  <nav>
+    <a href="#introduction">Introduction</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education & Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="https://cdn.discordapp.com/attachments/570028100818042939/1415217848980209796/Resume.pdf" target="_blank" download class="resume-btn">Download Resume</a>
+  </nav>
+  <div class="download-resume">
+    <a href="https://cdn.discordapp.com/attachments/570028100818042939/1415217848980209796/Resume.pdf" target="_blank" download>Download Rudy's Resume</a>
   </div>
-  <div class="project">
-    <h4>Game Development</h4>
-    <p>I was working on a game, but I stopped after my files got corrupted.</p>
-    <img width="320" height="240" controls="" src="IMG_69.jpg" alt="charater i kit bashed for the game">
-    <p>charater i kit bashed for the game.</p>
-    <video width="320" height="240" controls="">
-      <source src="IMG_6917.mp4" type="video/mp4">
+</aside>
+
+<main>
+
+  <section id="introduction" class="introduction">
+    <h3>Introduction</h3>
+    <p>
+      Hi! My Name is Rodolfo Ochoa but I go by Rudy for short. I currently live in Lake Havasu and I'm majoring in cybersecurity. I'm currently working at a doctor's office, but in my free time, I like to draw and play games with my friends. I also own two cats.
+    </p>
+  </section>
+
+
+  <section id="skills" class="skills">
+    <h3>Skills</h3>
+    <h4>Technical Skills</h4>
+    <ul>
+      <li>Cybersecurity</li>
+      <li>Modeling</li>
+      <li>Texturing</li>
+      <li>Game Development</li>
+    </ul>
+    <h4>Creative Skills</h4>
+    <ul>
+      <li>Drawing</li>
+      <li>3D Modeling</li>
+    </ul>
+    <h4>Interpersonal Skills</h4>
+    <ul>
+      <li>Teamwork</li>
+      <li>Communication</li>
+    </ul>
+  </section>
+
+  <section id="education" class="education">
+    <h3>Education and Experience</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Institution / Company</th>
+          <th>Position / Degree</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Local Government IT Department</td>
+          <td>Intern</td>
+          <td>Junior Year of High School</td>
+        </tr>
+        <tr>
+          <td>Northern Arizona University (NAU)</td>
+          <td>Student (Cybersecurity)</td>
+          <td>Starting 3rd Year</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="projects" class="projects">
+    <h3>Projects Showcase</h3>
+    <div class="project">
+      <h4>Animal Crossing Model</h4>
+      <p>I do some modeling for fun and I've been adjusting an old Animal Crossing model with different texturing and items.</p>
+      <img src="IMG_1268.png" alt="Animal Crossing Model Textured" width="320" height="240" />
+    </div>
+    <div class="project">
+      <h4>Game Development</h4>
+      <p>I was working on a game, but I stopped after my files got corrupted.</p>
+      <img src="IMG_69.jpg" alt="Character kitbashed for the game" width="320" height="240" />
+      <p>Character kitbashing for the game.</p>
+      <video width="320" height="240" controls>
+        <source src="IMG_6917.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <p>Test of the game I did.</p>
+    </div>
+  </section>
+
+
+  <section id="contact" class="contact">
+    <h3>Contact Information</h3>
+    <p>
+      <strong>Gmail (Personal):</strong> <a href="mailto:ochoarudy02@gmail.com">ochoarudy02@gmail.com</a><br>
+      <strong>Nau Gmail:</strong> <a href="mailto:Ro374@nau.edu">Ro374@nau.edu</a><br>
+      <strong>GitHub:</strong> <a href="https://github.com/ro374-dot" target="_blank">https://github.com/ro374-dot</a><br>
+    </p>
+  </section>
+
+
+  <section class="intro-video" id="about">
+    <h3>About Me</h3>
+    <video width="320" height="240" controls>
+      <source src="Intro.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
     </video>
-     <p>Test of the game i did.</p>
-  </div>
-</section>
-
-<!-- Step 4: Contact info with hyperlinks -->
-<section class="contact">
-  <h3>Contact Information</h3>
-  <p>
-    <strong>Gmail (Personal):</strong> <a href="mailto:ochoarudy02@gmail.com">ochoarudy02@gmail.com</a><br>
-    <strong>Nau Gmail:</strong> <a href="mailto:Ro374@nau.edu">Ro374@nau.edu</a><br>
-    <strong>GitHub:</strong> <a href="https://github.com/ro374-dot" target="_blank">https://github.com/ro374-dot</a><br>
-  </p>
-</section>
-
-<!-- Step 5: Download Resume -->
-<section class="resume">
-  <h3>Download My Resume</h3>
-  <a href="https://cdn.discordapp.com/attachments/570028100818042939/1415217848980209796/Resume.pdf?ex=68c267d4&is=68c11654&hm=7552c9543944817f139d2428f2abb8b0dcb9d587258d5fa98e23d0d7cbd41d91&" download="">Download Rudy Ochoa's Resume</a>
-</section>
-
-<!-- Step 7: Optional - Embed a Video Introduction -->
-<section class="intro-video">
-  <h3>About Me</h3>
-  <video width="320" height="240" controls="">
-    <source src="Intro.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</section>
+  </section>
+</main>
 
 <!-- Footer -->
 <footer>
   <p>© 2025 Rudy Ochoa</p>
 </footer>
 
-<!-- Scripts if needed -->
-<script src="./script.js"></script>
-
-<script src="./script.js"></script></body></html>
+</body>
+</html>
