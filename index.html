@@ -5,17 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rudy Ochoa - Personal Portfolio</title>
 <style>
-  /* Overall Body Styles */
-  body {
+  /* Basic Reset and Font */
+  * {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+  }
+
+  body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
-  }
-
-  /* Grid Layout for the Entire Page */
-  body {
     display: grid;
     grid-template-areas:
       "header header"
@@ -26,109 +27,180 @@
     min-height: 100vh;
   }
 
+  /* Responsive Layout Adjustments */
+  @media (max-width: 1024px) {
+    body {
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+    }
+    aside.sidebar {
+      position: relative;
+      flex-direction: row;
+      padding: 10px;
+      border-right: none;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav {
+      flex-direction: row;
+    }
+    nav a {
+      margin: 0 5px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* Further adjustments for tablets and smaller devices */
+    body {
+      padding: 10px;
+    }
+    aside.sidebar {
+      flex-direction: column;
+    }
+    nav {
+      flex-direction: column;
+    }
+    nav a {
+      margin: 5px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Mobile specific styles */
+    body {
+      font-size: 14px;
+    }
+    main {
+      padding: 10px;
+    }
+    section {
+      margin-bottom: 20px;
+    }
+  }
+
   /* Header */
-  header {
-    grid-area: header;
-    background-color: #fff;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+header {
+  grid-area: header;
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky; /* Sticky header */
+  top: 0;
+  z-index: 10;
+}
 
-  /* Sidebar Navigation */
-  aside.sidebar {
-    grid-area: sidebar;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-right: 1px solid #ccc;
-    position: relative; 
-  }
+header h1 {
+  font-size: 2em;
+}
 
-  /* Navigation Items with Flexbox */
-  nav {
-    display: flex;
-    flex-direction: column;
-  }
+header h2 {
+  font-size: 1.2em;
+  color: #555;
+}
 
-  nav a {
-    text-decoration: none;
-    padding: 10px 15px;
-    margin: 5px 0;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-  }
-  nav a:hover {
-    background-color: #d0d0d0;
-  }
+/* Sidebar Navigation */
+aside.sidebar {
+  grid-area: sidebar;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  position: relative;
+}
 
-  /* Download Resume Button - Absolute Position */
-  .download-resume {
-    position: absolute;
-    bottom: 4px;
-    left: 20px;
-    right: 40px;
-  }
-  .download-resume a {
-    display: inline-block;
-    width: 100%;
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 8px;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  .download-resume a:hover {
-    background-color: #0056b3;
-    transform: scale(1.02);
-  }
+/* Navigation Items */
+nav {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px; /* space for download button */
+}
 
-  /* Main Content */
- main {
-    grid-area: main;
-    padding: 20px;
-    overflow-y: auto;
-  }
+nav a {
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+nav a:hover {
+  background-color: #d0d0d0;
+  transform: scale(1.02);
+}
 
-  /* Footer */
-  footer {
-    grid-area: footer;
-    background-color: #fff;
-    padding: 15px;
-    text-align: center;
-    font-size: 0.9em;
-    color: #777;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-  }
+/* Download Resume Button - Absolute Position with Transition Effects */
+.download-resume {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+}
+.download-resume a {
+  display: inline-block;
+  width: 100%;
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, border-radius 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.download-resume a:hover {
+  background-color: #0056b3;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: scale(1.02);
+}
 
-  /* Style for Sections */
+/* Main Content */
+main {
+  grid-area: main;
+  padding: 20px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+/* Footer */
+footer {
+  grid-area: footer;
+  background-color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+/* Sections */
 section {
   margin-bottom: 30px;
 }
 
-/* Specific Section Styles with Selectors */
+/* Headings */
 h3 {
   margin-top: 0;
   color: #333;
+  font-size: 1.5em;
 }
 
-/* Style Summary, Education, Experience sections */
-section.education, section.experience, section.introduction {
-  font-family: Arial, sans-serif;
-}
-
-/* Education Table Styling */
+/* Education Table */
 section.education table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
-section.education th, section.education td {
+section.education th,
+section.education td {
   border: 1px solid #aaa;
   padding: 8px;
   text-align: left;
@@ -137,7 +209,7 @@ section.education th {
   background-color: #eee;
 }
 
-/* Skills Section with Flexbox */
+/* Skills Section with Transforms and Transitions */
 section.skills {
   display: flex;
   flex-wrap: wrap;
@@ -156,7 +228,19 @@ section.skills ul {
   margin: 0;
 }
 
-/* Projects Section with Grid */
+/* Individual Skill Items with Transform on Hover */
+section.skills li {
+  padding: 8px;
+  border-radius: 4px;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+section.skills li:hover {
+  transform: scale(1.05) rotate(1deg);
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Projects Section with Grid and Hover Effects */
 section.projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -166,27 +250,47 @@ section.projects {
   background-color: #fff;
   padding: 15px;
   border-radius: 8px;
-  /* Bonus: Box Shadow for depth */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.project:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
 }
 .project h4 {
   margin-top: 0;
 }
+
+/* Images with Float and Transition */
 .project img {
   max-width: 100%;
   height: auto;
   display: block;
   margin-top: 10px;
+  float: left; /* float images horizontally */
+  margin-right: 10px;
   border-radius: 4px;
+  transition: transform 0.3s, opacity 0.3s;
 }
+.project img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Video Styles and Transitions */
 .project video {
   max-width: 100%;
   height: auto;
   margin-top: 10px;
   border-radius: 4px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.project video:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: scale(1.02);
 }
 
-/* Contact Info with Relative Positioning */
+/* Contact Section with Relative Positioning */
 section.contact {
   position: relative;
 }
@@ -194,17 +298,58 @@ section.contact p {
   margin: 0;
 }
 
-/* Optional: Enhance links */
+/* Links Styling */
 a {
   color: #007BFF;
+  transition: color 0.3s;
 }
 a:hover {
+  color: #0056b3;
   text-decoration: underline;
 }
 
+/* Spinner for Page Load (Bonus) */
+#spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease forwards;
+}
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #007BFF;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fade Out Animation for Loader */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}
 </style>
 </head>
 <body>
+
+<!-- Loader Spinner (Bonus) -->
+<div id="spinner">
+  <div class="spinner"></div>
+</div>
 
 <header>
   <h1>Rudy Ochoa</h1>
@@ -218,17 +363,19 @@ a:hover {
     <a href="#education">Education & Experience</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
+  </nav>
+  <div class="download-resume">
+    <a href="your_resume.pdf" download>Download Resume</a>
+  </div>
 </aside>
 
 <main>
-
   <section id="introduction" class="introduction">
     <h3>Introduction</h3>
     <p>
       Hi! My Name is Rodolfo Ochoa but I go by Rudy for short. I currently live in Lake Havasu and I'm majoring in cybersecurity. I'm currently working at a doctor's office, but in my free time, I like to draw and play games with my friends. I also own two cats.
     </p>
   </section>
-
 
   <section id="skills" class="skills">
     <h3>Skills</h3>
@@ -296,7 +443,6 @@ a:hover {
     </div>
   </section>
 
-
   <section id="contact" class="contact">
     <h3>Contact Information</h3>
     <p>
@@ -305,7 +451,6 @@ a:hover {
       <strong>GitHub:</strong> <a href="https://github.com/ro374-dot" target="_blank">https://github.com/ro374-dot</a><br>
     </p>
   </section>
-
 
   <section class="intro-video" id="about">
     <h3>About Me</h3>
@@ -320,6 +465,17 @@ a:hover {
 <footer>
   <p>© 2025 Rudy Ochoa</p>
 </footer>
+
+<!-- JavaScript for Loader -->
+<script>
+  window.addEventListener('load', () => {
+    const spinner = document.getElementById('spinner');
+    spinner.style.opacity = '0';
+    setTimeout(() => {
+      spinner.style.display = 'none';
+    }, 500);
+  });
+</script>
 
 </body>
 </html>
