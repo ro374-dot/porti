@@ -154,6 +154,20 @@ section.education td {
 section.education th {
   background-color: #eee;
 }
+  section.education th,
+section.education td {
+  border: 1px solid #aaa;
+  padding: 8px;
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s; /* add transition */
+  cursor: pointer; /* optional, for better UX */
+}
+
+section.education th:hover,
+section.education td:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
 /* Projects hover effects */
 .project {
   background-color: #fff;
