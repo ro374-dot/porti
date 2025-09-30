@@ -170,19 +170,6 @@ section.skills li:hover {
   transform: scale(1.05);
   opacity: 0.9;
 }
-.project video {
-  max-width: 100%;
-  height: auto;
-  margin-top: 10px;
-  border-radius: 4px;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.project video:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transform: scale(1.02);
-}
-
-/* Contact section */
 section.contact {
   /* no special layout needed, keep default */
 }
@@ -304,11 +291,11 @@ a:hover {
 
   <section class="intro-video" id="about">
     <h3>About Me</h3>
-    <video controls>
+    <video width="320" height="240" controls>
       <source src="Intro.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
     </video>
   </section>
-</main>
 
 <!-- Footer fixed at bottom -->
 <footer>
