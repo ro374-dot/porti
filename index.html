@@ -244,6 +244,9 @@ section {
           <div class="card-body">
             <h4 class="card-title">Animal Crossing Model</h4>
             <p class="card-text">Texturing and modeling...</p>
+              <div class="mb-2">
+              <button class="btn btn-custom-purple" data-bs-toggle="modal" data-bs-target="#project1Modal">View Details</button>
+            </div>
             <img src="IMG_1268.png" class="img-fluid rounded" alt="model i worked on using old 2ds animal crossing model" />
           </div>
         </div>
@@ -255,7 +258,7 @@ section {
             <h4 class="card-title">Game Development</h4>
             <p class="card-text">Game project info...</p>
             <div class="mb-2">
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project2Modal">View Details</button>
+              <button class="btn btn-custom-purple " data-bs-toggle="modal" data-bs-target="#project2Modal">learn more</button>
             </div>
             <video class="w-100 rounded" controls>
               <source src="IMG_6917.mp4" type="video/mp4" />
@@ -302,13 +305,26 @@ section {
 <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
+      <!-- Modal Header -->
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title" id="project1ModalLabel">Animal Crossing Model Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <!-- Modal Body -->
       <div class="modal-body">
-        <p>More info about the Animal Crossing 3DS model, textures, and modeling process.</p>
-        <!-- Add images or descriptions here -->
+        <h6>Project Overview</h6>
+        <p>This project involved creating a detailed 3D model inspired by Animal Crossing for the Nintendo 3DS. It includes detailed texturing and modeling using Blender.</p>
+        <h6>Tools Used</h6>
+        <ul>
+          <li>Blender</li>
+          <li>Subsurface Modeling</li>
+          <li>UV Mapping</li>
+          <li>Texturing</li>
+        </ul>
+        <h6>Challenges & Notes</h6>
+        <p>Achieving the cartoonish style while maintaining proper topology and UV mapping was challenging. Optimization for real-time rendering was also a consideration.</p>
+        <!-- Optional: Add images or more detailed descriptions -->
+        <img src="IMG_1268.png" class="img-fluid rounded mt-3" alt="Animal Crossing model screenshot"/>
       </div>
     </div>
   </div>
@@ -322,11 +338,12 @@ section {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Additional info about the game project, tools used, challenges, etc.</p>
+        <p>This was what i was working on before the files corrupted it was gonna be a cyberpunk style game and i was able to kitbash the model myself all of it was made using unity</p>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
