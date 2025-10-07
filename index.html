@@ -4,202 +4,86 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rudy Ochoa - Personal Portfolio</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Google Fonts for custom typography -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet" />
+
 <style>
-  /* Basic Reset and Font */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  /* Reset and base styles */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
-    /* Remove grid layout for now, we'll use fixed header/footer and flex/grid inside main */
-    margin: 0;
+    padding-top: 80px;
   }
 
-  /* Fixed Header with Flexbox */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 80px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 10;
-  padding: 10px 20px;
+  /* Custom typography for header */
+  header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+  }
+  header h2 {
+    font-size: 1.2rem;
+    color: #555;
+  }
+
+  /* Gradient backgrounds for header and footer */
+  .header-gradient {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    padding: 20px 0;
+    color: #fff;
+    text-align: center;
+  }
+  .footer-gradient {
+    background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+    padding: 10px 0;
+    color: #fff;
+    text-align: center;
+  }
+
+  /* Navigation styles */
+.nav-link {
+  color: #fff !important;
+}
+.nav-link:hover {
+  color: #ffd700 !important;
 }
 
-body {
-  padding-top: 80px; /* height of header */
+  /* Hover pop-out effects for cards and table rows */
+.card, table tbody tr, .project:hover {
+  transition: all 0.3s ease;
+}
+.card:hover, table tbody tr:hover, .project:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: translateY(-3px);
 }
 
-/* Header content styling */
-header h1 {
-  font-size: 2em;
-}
-
-header h2 {
-  font-size: 1.2em;
-  color: #555;
-}
-
-/* Fixed Footer with Flexbox */
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-  font-size: 0.9em;
-  color: #777;
-  padding: 10px 20px;
-}
-
-/* Sidebar navigation as top nav bar using Flexbox */
-aside.sidebar {
-  position: fixed;
-  top: 80px; /* below header */
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-around; /* spread items evenly */
-  align-items: center;
-  z-index: 9;
-  border-bottom: 1px solid #ccc;
-}
-
-/* Navigation links */
-nav a {
-  flex-grow: 1; /* equal space for all items */
-  text-align: center;
-  text-decoration: none;
-  padding: 10px;
-  font-weight: bold;
-  color: #333;
-  transition: background 0.3s;
-}
-nav a:hover {
-  background-color: #e0e0e0;
-}
-
-/* Main content area */
-main {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 20px;
-  margin-top: 130px; /* space for header + nav bar */
-  margin-bottom: 70px; /* space for footer */
-  gap: 20px;
-}
-
-/* Sections - add padding to prevent sticking to edges */
+/* Section styles */
 section {
-  padding: 20px;
+  padding: 30px 15px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Skills and Projects with CSS Grid */
-section.skills, section.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+/* Skills cards styling */
+#skills .card {
+  height: 100%;
 }
 
-/* Emphasize certain items if needed, e.g., span */
-.skill-highlight {
-  grid-column: span 2; /* example for span */
-}
-
-/* For skill list items, keep hover effects */
-section.skills li {
-  padding: 8px;
-  border-radius: 4px;
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-}
-section.skills li:hover {
-  transform: scale(1.05) rotate(1deg);
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-section.education table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-section.education th,
-section.education td {
-  border: 1px solid #aaa;
-  padding: 8px;
-  text-align: left;
-}
-section.education th {
-  background-color: #eee;
-}
-section.education td {
-  background-color: #eee;
-}
-section.education th,
-section.education td {
-  border: 1px solid #aaa;
-  padding: 8px;
-  text-align: left;
-  transition: transform 0.2s, box-shadow 0.2s; /* add transition */
-  cursor: pointer; /* optional, for better UX */
-}
-
-section.education th:hover,
-section.education td:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
 /* Projects hover effects */
 .project {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.project:hover {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  transform: translateY(-5px);
-}
-.project h4 {
-  margin-top: 0;
+  cursor: pointer;
 }
 
-/* Images and videos in projects */
-.project img:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-/* Link styles for hover effects */
-a {
-  color: #007BFF;
-  transition: color 0.3s;
-}
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-/* Loader spinner remains unchanged, place at the top as before */
+/* Loader spinner */
 #spinner {
   position: fixed;
   top: 0; left: 0;
@@ -212,7 +96,7 @@ a:hover {
 }
 .spinner {
   border: 8px solid #f3f3f3;
-  border-top: 8px solid #007BFF;
+  border-top: 8px solid #007bff;
   border-radius: 50%;
   width: 60px; height: 60px;
   animation: spin 1s linear infinite;
@@ -223,129 +107,226 @@ a:hover {
 }
 </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
 
-<!-- Loader Spinner (Bonus) -->
+<!-- Loader -->
 <div id="spinner">
   <div class="spinner"></div>
 </div>
 
-<header>
-  <h1>Rudy Ochoa</h1>
-  <h2>Personal Portfolio</h2>
+<!-- Header with gradient -->
+<header class="header-gradient sticky-top" id="header">
+  <div class="container">
+    <h1>Rudy Ochoa</h1>
+    <h2>Personal Portfolio</h2>
+  </div>
 </header>
 
-<aside class="sidebar">
-  <!-- Navigation as top bar -->
-  <nav>
-    <a href="#introduction">Introduction</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education & Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="download-resume">
-   <a href="https://profile.indeed.com/p/rudyo-h8rcht0" target="_blank">download resume</a>
+<!-- Navigation Bar with Bootstrap -->
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark" style="z-index: 10;">
+  <div class="container">
+    <a class="navbar-brand" href="#introduction">Rudy Ochoa</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav gap-3">
+        <li class="nav-item"><a class="nav-link" href="#introduction">Introduction</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education & Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-warning ms-3" href="https://profile.indeed.com/p/rudyo-h8rcht0" target="_blank">Download Resume</a>
   </div>
-</aside>
+</nav>
 
-<main>
-  <!-- Content Sections -->
-  <section id="introduction">
-    <h3>Introduction</h3>
-    <p>Hi! My Name is Rodolfo Ochoa but I go by Rudy for short I am student at NAU studying Cyber Secruity</p>
-  </section>
+<!-- Main Content -->
+<main class="container my-4" id="main-content">
 
-  <section id="skills">
-    <h3>Skills</h3>
-    <!-- Use CSS Grid for Skills -->
-    <div class="skill-grid">
-      <h4>Technical Skills</h4>
-      <ul>
-        <li>Cybersecurity</li><li>Modeling</li><li>Texturing</li><li>Game Development</li>
-      </ul>
-      <h4>Creative Skills</h4>
-      <ul>
-        <li>Drawing</li><li>3D Modeling</li>
-      </ul>
-      <h4>Interpersonal Skills</h4>
-      <ul>
-        <li>Teamwork</li><li>Communication</li>
-      </ul>
+  <!-- Introduction -->
+  <section id="introduction" class="mb-5">
+    <div class="text-center">
+      <h3>Introduction</h3>
+      <p class="lead">Hi! My Name is Rodolfo Ochoa but I go by Rudy for short. I am a student at NAU studying Cyber Security.</p>
     </div>
   </section>
-<section id="education" class="education">
-    <h3>Education and Experience</h3>
-  <table>
-      <thead>
-        <tr>
-          <th>Institution / Company</th>
-          <th>Position / Degree</th>
-          <th>Duration</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Local Government IT Department</td>
-          <td>Intern</td>
-          <td>Junior Year of High School</td>
-        </tr>
-        <tr>
-          <td>Northern Arizona University (NAU)</td>
-          <td>Student (Cybersecurity)</td>
-          <td>Starting 3rd Year</td>
-        </tr>
-      </tbody>
-    </table>
+
+  <!-- Skills -->
+  <section id="skills" class="mb-5">
+    <h3 class="text-center mb-4">Skills</h3>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm hover-shadow">
+          <div class="card-body">
+            <h4 class="card-title text-center">Technical Skills</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cybersecurity</li>
+              <li class="list-group-item">Modeling</li>
+              <li class="list-group-item">Texturing</li>
+              <li class="list-group-item">Game Development</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm hover-shadow">
+          <div class="card-body">
+            <h4 class="card-title text-center">Creative Skills</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Drawing</li>
+              <li class="list-group-item">3D Modeling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm hover-shadow">
+          <div class="card-body">
+            <h4 class="card-title text-center">Interpersonal Skills</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Teamwork</li>
+              <li class="list-group-item">Communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="projects">
-    <h3>Projects Showcase</h3>
-    <div class="project">
-      <h4>Animal Crossing Model</h4>
-      <p>Texturing and modeling...</p>
-      <img src="IMG_1268.png" width="320" height="320" alt="model i worked on using old 2ds animal crossing model"/>
+  <!-- Education & Experience -->
+  <section id="education" class="mb-5">
+    <h3 class="text-center mb-4">Education and Experience</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-secondary">
+          <tr>
+            <th>Institution / Company</th>
+            <th>Position / Degree</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Local Government IT Department</td>
+            <td>Intern</td>
+            <td>Junior Year of High School</td>
+          </tr>
+          <tr>
+            <td>Northern Arizona University (NAU)</td>
+            <td>Student (Cybersecurity)</td>
+            <td>Starting 3rd Year</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="project">
-      <h4>Game Development</h4>
-      <p>Game project info...</p>
-      
-      <video width="320" height="420" controls>
-        <source src="IMG_6917.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="mb-5">
+    <h3 class="text-center mb-4">Projects Showcase</h3>
+    <div class="row g-4">
+      <!-- Project 1 -->
+      <div class="col-md-6">
+        <div class="card hover-shadow project" data-bs-toggle="modal" data-bs-target="#project1Modal">
+          <div class="card-body">
+            <h4 class="card-title">Animal Crossing Model</h4>
+            <p class="card-text">Texturing and modeling...</p>
+            <img src="IMG_1268.png" class="img-fluid rounded" alt="model i worked on using old 2ds animal crossing model" />
+          </div>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="col-md-6">
+        <div class="card hover-shadow project" data-bs-toggle="modal" data-bs-target="#project2Modal">
+          <div class="card-body">
+            <h4 class="card-title">Game Development</h4>
+            <p class="card-text">Game project info...</p>
+            <div class="mb-2">
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project2Modal">View Details</button>
+            </div>
+            <video class="w-100 rounded" controls>
+              <source src="IMG_6917.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <img src="IMG_69.jpg" class="img-fluid rounded mt-3" alt="character model for game" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mb-5">
+    <h3 class="text-center mb-4">Contact Information</h3>
+    <div class="card p-3 mx-auto" style="max-width: 600px;">
+      <p><strong>Gmail (Personal):</strong> <a href="mailto:ochoarudy02@gmail.com">ochoarudy02@gmail.com</a></p>
+      <p><strong>Nau Gmail:</strong> <a href="mailto:Ro374@nau.edu">Ro374@nau.edu</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/ro374-dot" target="_blank">https://github.com/ro374-dot</a></p>
+    </div>
+  </section>
+
+  <!-- About Me Video -->
+  <section id="about" class="mb-5">
+    <h3 class="text-center mb-4">About Me</h3>
+    <div class="d-flex justify-content-center">
+      <video class="rounded" width="320" height="240" controls>
+        <source src="Intro.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
-
-      <img src="IMG_69.jpg" width="320" height="380" alt="charater model for game"/>
     </div>
   </section>
+</main>
 
-  <section id="contact" class="contact">
-    <h3>Contact Information</h3>
-    <p>
-      <strong>Gmail (Personal):</strong> <a href="mailto:ochoarudy02@gmail.com">ochoarudy02@gmail.com</a><br>
-      <strong>Nau Gmail:</strong> <a href="mailto:Ro374@nau.edu">Ro374@nau.edu</a><br>
-      <strong>GitHub:</strong> <a href="https://github.com/ro374-dot" target="_blank">https://github.com/ro374-dot</a><br>
-    </p>
-  </section>
-
-  <section class="intro-video" id="about">
-    <h3>About Me</h3>
-    <video width="320" height="240" controls>
-      <source src="Intro.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </section>
-
-<!-- Footer fixed at bottom -->
-<footer>
-  <p>© 2025 Rudy Ochoa</p>
+<!-- Footer with gradient -->
+<footer class="footer-gradient">
+  <div class="container text-center">
+    <p class="mb-0">© 2025 Rudy Ochoa</p>
+  </div>
 </footer>
 
-<!-- Loader script -->
+<!-- Modals for projects (Bonus) -->
+<!-- Project 1 Modal -->
+<div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="project1ModalLabel">Animal Crossing Model Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>More info about the Animal Crossing 3DS model, textures, and modeling process.</p>
+        <!-- Add images or descriptions here -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Project 2 Modal -->
+<div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="project2ModalLabel">Game Development Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Additional info about the game project, tools used, challenges, etc.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
+  // Hide loader on window load
   window.addEventListener('load', () => {
     document.getElementById('spinner').style.display = 'none';
   });
 </script>
+
 </body>
 </html>
