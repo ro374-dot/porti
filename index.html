@@ -65,25 +65,12 @@
 }
 
   /* Hover pop-out effects for cards and table rows */
-.section.education th:hover,
-section.education td:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+.card, table tbody tr, .project:hover {
+  transition: all 0.3s ease;
 }
-/* Projects hover effects */
-.project {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.project:hover {
+.card:hover, table tbody tr:hover, .project:hover {
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  transform: translateY(-5px);
-}
-.project h4 {
-  margin-top: 0;
+  transform: translateY(-3px);
 }
 
 /* Section styles */
