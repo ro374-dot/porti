@@ -4,19 +4,20 @@ console.log('Hello World!'); // Verify integration
 const ownerName = "Rudy";
 let hasDownloadedResume = false;
 
-// Show greeting
+// Function to generate greeting message
 function showGreeting(name) {
   return `Hello, my name is ${name}! Welcome to my portfolio!`;
 }
 
+// Function to display greeting in the HTML element
 function displayGreeting() {
-  const greetingMsg = showGreeting(ownerName);
-  document.getElementById('greeting').textContent = greetingMsg;
+  const greetingEl = document.getElementById('greeting');
+  if (greetingEl) {
+    greetingEl.textContent = showGreeting(ownerName);
+  }
 }
 
-// Date calculation
-const projectDeadline = new Date('2025-12-31');
-
+// Function to calculate days until a deadline
 function daysUntilDeadline(deadline) {
   const today = new Date();
   const diffTime = deadline - today; // in ms
@@ -24,18 +25,32 @@ function daysUntilDeadline(deadline) {
   return diffDays;
 }
 
+// Set your project deadline
+const projectDeadline = new Date('2025-12-31');
 const remainingDays = daysUntilDeadline(projectDeadline);
 console.log(`Days until project deadline: ${remainingDays}`);
 
-// Resume download alert with delay
-document.getElementById('downloadBtn').addEventListener('click', () => {
-  // Remove the if condition to allow alert every time
-  setTimeout(() => {
-    alert("Your resume is downloaded successfully!");
-  }, 2000);
+// Wait for DOM to load before attaching event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Display greeting message
+  displayGreeting();
+
+  // Attach click event to the resume download button
+  const downloadBtn = document.getElementById('downloadBtn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      if (!hasDownloadedResume) {
+        // Delay alert by 2 seconds
+        setTimeout(() => {
+          alert("Your resume is downloaded successfully!");
+        }, 2000);
+        hasDownloadedResume = true; // prevent multiple alerts
+      }
+    });
+  }
 });
 
-// Display greeting on load
-window.addEventListener('load', () => {
-  displayGreeting();
-});
+
+
+
