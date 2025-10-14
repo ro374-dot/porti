@@ -86,7 +86,11 @@ section {
 #skills .card {
   height: 100%;
 }
-
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 /* Projects hover effects */
 .project {
   cursor: pointer;
@@ -116,11 +120,11 @@ section {
 }
 </style>
 </head>
-<!-- Loader -->
-<div id="spinner">
-  <div class="spinner"></div>
-</div>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
+<!-- Loader -->
+  <div id="spinner">
+    <div class="spinner"></div>
+  </div>
 <!-- Header with gradient -->
   <header class="header-gradient sticky-top" id="header">
   <div class="container">
