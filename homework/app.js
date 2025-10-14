@@ -29,12 +29,10 @@ console.log(`Days until project deadline: ${remainingDays}`);
 
 // Resume download alert with delay
 document.getElementById('downloadBtn').addEventListener('click', () => {
-  if (!hasDownloadedResume) {
-    setTimeout(() => {
-      alert("Your resume is downloaded successfully!");
-    }, 2000);
-    hasDownloadedResume = true;
-  }
+  // Remove the if condition to allow alert every time
+  setTimeout(() => {
+    alert("Your resume is downloaded successfully!");
+  }, 2000);
 });
 
 // Display greeting on load
