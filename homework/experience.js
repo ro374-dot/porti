@@ -1,6 +1,7 @@
-let skills = [];
+// homework/experience.js
 
-// Load skills from local storage if needed
+// Step 1: Skills array and DOM setup
+let skills = [];
 const skillsListEl = document.getElementById('skillsList');
 const skillInput = document.getElementById('skillInput');
 const addSkillBtn = document.getElementById('addSkillBtn');
@@ -24,11 +25,7 @@ function renderSkills() {
   });
 }
 
-// Initialize with some skills if desired
-// skills = ['JavaScript', 'HTML', 'CSS'];
-// renderSkills();
-
-// Projects data
+// Step 2: Projects data and display
 const projects = [
   {
     title: 'Animal Crossing Model',
@@ -47,10 +44,10 @@ const projects = [
   }
 ];
 
-const projectsContainer = document.querySelector('#projects .row');
+const projectContainer = document.getElementById('project-list');
 
 function displayProjects() {
-  projectsContainer.innerHTML = '';
+  projectContainer.innerHTML = '';
   const today = new Date();
 
   for (let p of projects) {
@@ -59,8 +56,6 @@ function displayProjects() {
 
     const card = document.createElement('div');
     card.className = 'card hover-shadow project';
-    card.setAttribute('data-bs-toggle', 'modal');
-    // You can add modal triggers if needed
 
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body';
@@ -73,7 +68,7 @@ function displayProjects() {
     descEl.className = 'card-text';
     descEl.textContent = p.description;
 
-    // Deadline and status
+    // Determine status based on date
     const deadlineDate = new Date(p.deadline);
     let statusText = '';
     if (deadlineDate > today) {
@@ -81,19 +76,20 @@ function displayProjects() {
     } else {
       statusText = 'Completed';
     }
+
     const statusEl = document.createElement('p');
-    statusEl.innerHTML = `<strong>Status:</strong> ${statusText} <br> <strong>Deadline:</strong> ${p.deadline}`;
+    statusEl.innerHTML = `<strong>Status:</strong> ${statusText} <br><strong>Deadline:</strong> ${p.deadline}`;
 
     cardBody.appendChild(titleEl);
     cardBody.appendChild(descEl);
     cardBody.appendChild(statusEl);
     card.appendChild(cardBody);
     cardCol.appendChild(card);
-    projectsContainer.appendChild(cardCol);
+    projectContainer.appendChild(cardCol);
   }
 }
 
-// Resume download counter
+// Step 4: Resume download tracking
 let downloadCount = 0;
 const downloadCountEl = document.getElementById('downloadCount');
 const downloadBtn = document.getElementById('downloadResumeBtn');
@@ -103,7 +99,7 @@ downloadBtn.addEventListener('click', () => {
   downloadCountEl.textContent = downloadCount;
 });
 
-// Dynamic Experience Table
+// Step 5: Generate Experience Table
 const experienceData = [
   {
     role: 'Intern',
@@ -121,11 +117,12 @@ const experienceData = [
 
 const experienceContainer = document.getElementById('experienceTableContainer');
 
-function generateTable(data, title) {
+function generateExperienceTable() {
   const container = document.createElement('div');
   const heading = document.createElement('h4');
   heading.className = 'text-center mb-3';
-  heading.textContent = title;
+  heading.textContent = 'Experience';
+
   const tableDiv = document.createElement('div');
   tableDiv.className = 'table-responsive';
 
@@ -136,18 +133,18 @@ function generateTable(data, title) {
   thead.className = 'table-secondary';
 
   const headerRow = document.createElement('tr');
-  Object.values(data[0]).forEach(header => {
+  ['Role', 'Company', 'Start', 'End'].forEach(text => {
     const th = document.createElement('th');
-    th.textContent = header.charAt(0).toUpperCase() + header.slice(1);
+    th.textContent = text;
     headerRow.appendChild(th);
   });
   thead.appendChild(headerRow);
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  data.forEach(item => {
+  experienceData.forEach(item => {
     const row = document.createElement('tr');
-    Object.values(item).forEach(val => {
+    [item.role, item.company, item.start, item.end].forEach(val => {
       const td = document.createElement('td');
       td.textContent = val;
       row.appendChild(td);
@@ -161,11 +158,10 @@ function generateTable(data, title) {
   experienceContainer.innerHTML = '';
   experienceContainer.appendChild(container);
 }
+// Call experience table generator
+generateExperienceTable();
 
-// Generate Experience Table
-generateTable(experienceData, 'Experience');
-
-// Education data
+// Step 5: Generate Education Table
 const educationData = [
   {
     institution: 'Local High School',
@@ -181,11 +177,12 @@ const educationData = [
 
 const educationContainer = document.getElementById('educationTableContainer');
 
-function generateEducationTable(data) {
+function generateEducationTable() {
   const container = document.createElement('div');
   const heading = document.createElement('h4');
   heading.className = 'text-center mb-3';
   heading.textContent = 'Education';
+
   const tableDiv = document.createElement('div');
   tableDiv.className = 'table-responsive';
 
@@ -205,9 +202,9 @@ function generateEducationTable(data) {
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  data.forEach(item => {
+  educationData.forEach(item => {
     const row = document.createElement('tr');
-    Object.values(item).forEach(val => {
+    [item.institution, item.degree, item.duration].forEach(val => {
       const td = document.createElement('td');
       td.textContent = val;
       row.appendChild(td);
@@ -221,21 +218,19 @@ function generateEducationTable(data) {
   educationContainer.innerHTML = '';
   educationContainer.appendChild(container);
 }
+// Call education table generator
+generateEducationTable();
 
-// Generate Education Table
-generateEducationTable(educationData);
-
-// Theme toggle and style customization
-const themeButton = document.getElementById('toggleThemeBtn');
+// Step 6: Theme toggle & style customization
+const themeBtn = document.getElementById('toggleThemeBtn');
 const bodyEl = document.body;
 const bgColorPicker = document.getElementById('bgColorPicker');
 const fontSizeInput = document.getElementById('fontSizeInput');
 
-let isDarkTheme = false;
-
-themeButton.addEventListener('click', () => {
-  isDarkTheme = !isDarkTheme;
-  if (isDarkTheme) {
+let isDark = false;
+themeBtn.addEventListener('click', () => {
+  isDark = !isDark;
+  if (isDark) {
     bodyEl.classList.add('dark-theme');
   } else {
     bodyEl.classList.remove('dark-theme');
@@ -250,23 +245,7 @@ fontSizeInput.addEventListener('change', () => {
   bodyEl.style.fontSize = fontSizeInput.value + 'px';
 });
 
-// Optional: Define dark theme styles
-const style = document.createElement('style');
-style.innerHTML = `
-  .dark-theme {
-    background-color: #222 !important;
-    color: #eee !important;
-  }
-  .dark-theme header, .dark-theme footer {
-    background: linear-gradient(135deg, #222, #444);
-    color: #eee;
-  }
-`;
-document.head.appendChild(style);
-
-// Call display functions on load
+// Call display projects on load
 window.addEventListener('load', () => {
   displayProjects();
-  // Load skills from local storage if desired
-  // (Optional: implement storage persistence)
 });
