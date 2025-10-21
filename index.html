@@ -165,41 +165,111 @@ section {
   </section>
 
   <!-- Skills -->
- <section id="skills-input" class="mb-5">
-  <h3 class="text-center mb-4">Add Skills</h3>
-  <div class="d-flex justify-content-center">
-    <input type="text" id="skillInput" class="form-control w-50" placeholder="Enter a skill" />
-    <button id="addSkillBtn" class="btn btn-primary ms-2">Add Skill</button>
-  </div>
-  <div class="container mt-3">
-    <h5>Skills List:</h5>
-    <ul id="skillsList" class="list-group list-group-flush"></ul>
-  </div>
-</section>
+  <section id="skills" class="mb-5">
+    <h3 class="text-center mb-4">Skills</h3>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm hover-shadow">
+          <div class="card-">
+            <h4 class="card-title text-center">Technical Skills</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cybersecurity</li>
+              <li class="list-group-item">Modeling</li>
+              <li class="list-group-item">Texturing</li>
+              <li class="list-group-item">Game Development</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm hover-shadow">
+          <div class="card-body">
+            <h4 class="card-title text-center">Creative Skills</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Drawing</li>
+              <li class="list-group-item">3D Modeling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm hover-shadow">
+          <div class="card-body">
+            <h4 class="card-title text-center">Interpersonal Skills</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Teamwork</li>
+              <li class="list-group-item">Communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Resume Download Tracker -->
-<section id="resume-tracker" class="mb-5 text-center">
-  <h3>Resume Download Count: <span id="downloadCount">0</span></h3>
-  <a id="downloadResumeBtn" class="btn btn-success mt-2" href="https://profile.indeed.com/p/rudyo-h8rcht0" target="_blank">Download Resume</a>
-</section>
+  <!-- Education & Experience -->
+  <section id="education" class="mb-5">
+    <h3 class="text-center mb-4">Education and Experience</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered ">
+        <thead class="table-secondary">
+          <tr>
+            <th>Institution / Company</th>
+            <th>Position / Degree</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Local Government IT Department</td>
+            <td>Intern</td>
+            <td>Junior Year of High School</td>
+          </tr>
+          <tr>
+            <td>Northern Arizona University (NAU)</td>
+            <td>Student (Cybersecurity)</td>
+            <td>Starting 3rd Year</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-<!-- Experience and Education Tables -->
-<section id="experience-education" class="mb-5">
-  <h3 class="text-center mb-4">Experience</h3>
-  <div id="experienceTableContainer"></div>
-  <h3 class="text-center mb-4 mt-5">Education</h3>
-  <div id="educationTableContainer"></div>
-</section>
-
-<!-- Theme toggle and style customization -->
-<section id="theme-styles" class="mb-5 p-3 border rounded">
-  <h4 class="text-center mb-3">Theme & Style Customization</h4>
-  <div class="d-flex justify-content-center gap-3">
-    <button id="toggleThemeBtn" class="btn btn-secondary">Toggle Light/Dark Theme</button>
-    <input type="color" id="bgColorPicker" title="Background Color" />
-    <input type="number" id="fontSizeInput" placeholder="Font Size (px)" min="10" max="30" />
-  </div>
-</section>
+  <!-- Projects -->
+  <section id="projects" class="mb-5">
+    <h3 class="text-center mb-4">Projects Showcase</h3>
+    <div class="row g-4">
+      <!-- Project 1 -->
+      <div class="col-md-6">
+        <div class="card hover-shadow project" data-bs-toggle="modal" data-bs-target="#project1Modal">
+          <div class="card-body">
+            <h4 class="card-title">Animal Crossing Model</h4>
+            <p class="card-text">Texturing and modeling...</p>
+              <div class="mb-2">
+              <button class="btn btn-custom-purple" data-bs-toggle="modal" data-bs-target="#project1Modal">learn more</button>
+            </div>
+            <img src="IMG_1268.png" class="img-fluid rounded" alt="model i worked on using old 2ds animal crossing model" />
+          </div>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="col-md-6">
+        <div class="card hover-shadow project" data-bs-toggle="modal" data-bs-target="#project2Modal">
+          <div class="card-body">
+            <h4 class="card-title">Game Development</h4>
+            <p class="card-text">Game project info...</p>
+            <div class="mb-2">
+              <button class="btn btn-custom-purple " data-bs-toggle="modal" data-bs-target="#project2Modal">learn more</button>
+            </div>
+            <video class="w-100 rounded" controls>
+              <source src="IMG_6917.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <img src="IMG_69.jpg" class="img-fluid rounded mt-3" alt="character model for game" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Contact -->
   <section id="contact" class="mb-5">
@@ -294,6 +364,5 @@ section {
   });
 </script>
 <script src="homework/app.js"></script>
-<script src="homework/experience.js"></script>
 </body>
 </html>
