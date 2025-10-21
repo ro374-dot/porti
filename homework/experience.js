@@ -50,12 +50,21 @@ function displayProjects() {
   projectContainer.innerHTML = '';
   const today = new Date();
 
-  for (let p of projects) {
+  projects.forEach((p, index) => {
     const cardCol = document.createElement('div');
     cardCol.className = 'col-md-6';
 
     const card = document.createElement('div');
     card.className = 'card hover-shadow project';
+
+    // Set data-bs-toggle and data-bs-target for modal
+    if (index === 0) {
+      card.setAttribute('data-bs-toggle', 'modal');
+      card.setAttribute('data-bs-target', '#project1Modal');
+    } else if (index === 1) {
+      card.setAttribute('data-bs-toggle', 'modal');
+      card.setAttribute('data-bs-target', '#project2Modal');
+    }
 
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body';
@@ -86,9 +95,8 @@ function displayProjects() {
     card.appendChild(cardBody);
     cardCol.appendChild(card);
     projectContainer.appendChild(cardCol);
-  }
+  });
 }
-
 // Step 4: Resume download tracking
 let downloadCount = 0;
 const downloadCountEl = document.getElementById('downloadCount');
