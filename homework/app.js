@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hasDownloadedResume = true; // prevent multiple alerts
       }
     });
+  });
 });
 
 
