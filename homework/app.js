@@ -43,15 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadBtn = document.getElementById('downloadBtn');
   if (downloadBtn) {
     downloadBtn.addEventListener('click', () => {
-      if (!hasDownloadedResume) {
         // Delay alert by 2 seconds
         setTimeout(() => {
           alert("Your resume is downloaded successfully!");
         }, 2000);
-        hasDownloadedResume = true; // prevent multiple alerts
         downloadCount++;
         $downloadCountDisplay.text(downloadCount);
-      }
     });
   }
 });
