@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadBtn = document.getElementById('downloadBtn');
   if (downloadBtn) {
     downloadBtn.addEventListener('click', () => {
-      window.open('https://profile.indeed.com/p/rudyo-h8rcht0', '_blank');
       if (!hasDownloadedResume) {
         // Delay alert by 2 seconds
         setTimeout(() => {
