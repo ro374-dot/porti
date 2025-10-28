@@ -44,11 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open('https://profile.indeed.com/p/rudyo-h8rcht0', '_blank');
 
       // Handle alert and count
-      if (!hasDownloadedResume) {
-        setTimeout(() => {
-          alert("Your resume is downloaded successfully!");
-        }, 2000);// prevent multiple alerts
-      }
+      setTimeout(() => {
+        alert("Your resume is downloaded successfully!");
+      }, 2000);// prevent multiple alerts
+      
 
       // Increment download count and update display
       downloadCount++;
