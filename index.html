@@ -472,18 +472,6 @@
     currentProjects.sort((a,b) => a.deadline - b.deadline);
     renderProjects();
   });
-
-  // =========================
-  // Download Count Handling
-  // =========================
-  let downloadCount = 0;
-  const $downloadCountDisplay = $('#downloadCountDisplay');
-
-  $('#downloadBtn').on('click', () => {
-    downloadCount++;
-    $downloadCountDisplay.text(downloadCount);
-  });
-
   // =========================
   // Education & Experience Table
   // =========================
