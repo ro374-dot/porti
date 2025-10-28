@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Display greeting message
   displayGreeting();
+  let hasDownloadedResume = false;
   let downloadCount = 0;
   const $downloadCountDisplay = $('#downloadCountDisplay');
 
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           alert("Your resume is downloaded successfully!");
         }, 2000);
-        hasDownloadedResume = false; // prevent multiple alerts
+        hasDownloadedResume = true; // prevent multiple alerts
         downloadCount++;
         $downloadCountDisplay.text(downloadCount);
       }
