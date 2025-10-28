@@ -5,6 +5,7 @@ const ownerName = "Rudy";
 let hasDownloadedResume = false;
 let downloadCount = 0;
 const $downloadCountDisplay = $('#downloadCountDisplay');
+
 // Function to generate greeting message
 function showGreeting(name) {
   return `Hello, my name is ${name}! Welcome to my portfolio!`;
@@ -31,27 +32,28 @@ const projectDeadline = new Date('2025-12-31');
 const remainingDays = daysUntilDeadline(projectDeadline);
 console.log(`Days until project deadline: ${remainingDays}`);
 
-// Wait for DOM to load before attaching event listeners
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // Display greeting message
+  // Display greeting
   displayGreeting();
 
-  $('#downloadBtn').on('click', () => {
-    downloadCount++;
-    $downloadCountDisplay.text(downloadCount);
-  });
-  // Attach click event to the resume download button
+  // Attach click event to the download button (using vanilla JS for consistency)
   const downloadBtn = document.getElementById('downloadBtn');
   if (downloadBtn) {
     downloadBtn.addEventListener('click', () => {
+      // Open the link in a new tab
+      window.open('https://profile.indeed.com/p/rudyo-h8rcht0', '_blank');
+
+      // Handle alert and count
       if (!hasDownloadedResume) {
-        // Delay alert by 2 seconds
         setTimeout(() => {
           alert("Your resume is downloaded successfully!");
         }, 2000);
         hasDownloadedResume = true; // prevent multiple alerts
       }
+
+      // Increment download count and update display
+      downloadCount++;
+      $downloadCountDisplay.text(downloadCount);
     });
   }
 });
