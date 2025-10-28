@@ -1,514 +1,763 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rudy Ochoa - Personal Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rudy Ochoa - Personal Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Google Fonts for custom typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s, font-size 0.3s;
+        }
 
-<!-- Google Fonts for custom typography -->
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet" />
+        /* Custom typography for header */
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+        }
 
-<style>
-  /* Reset and base styles */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+        header h2 {
+            font-size: 1.2rem;
+            color: #555;
+        }
 
-  body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
-    transition: background-color 0.5s, color 0.5s, font-size 0.3s;
-  }
+        /* Gradient backgrounds for header and footer */
+        .header-gradient {
+            background: linear-gradient(135deg, #000000 0%, #6a11cb 100%);
+            padding: 20px 0;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+        }
 
-  /* Custom typography for header */
-  header h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: 2.5rem;
-  }
-  header h2 {
-    font-size: 1.2rem;
-    color: #555;
-  }
-  /* Gradient backgrounds for header and footer */
-  .header-gradient {
-    background: linear-gradient(135deg, #000000 0%, #6a11cb 100%);
-    padding: 20px 0;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-  }
-  .footer-gradient {
-    background: linear-gradient(135deg, #000000 0%, #6a11cb 100%);
-    padding: 10px 0;
-    color: #fff;
-    text-align: center;
-  }
+        .footer-gradient {
+            background: linear-gradient(135deg, #000000 0%, #6a11cb 100%);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+        }
 
-  /* Navigation styles */
-  .nav-link {
-    color: #fff !important;
-  }
-  .nav-link:hover {
-    color: #6a11cb !important;
-  }
-  .btn-custom-purple {
-    background-color: #6a11cb;
-    color: #fff; 
-    border: none;
-  }
-  .btn-custom-purple:hover {
-    background-color: #590ea3;
-    color: #fff;
-  }
-  .modal-header.bg-primary {
-    background-color: #6a11cb; 
-  }
+        /* Navigation styles */
+        .nav-link {
+            color: #fff !important;
+            cursor: pointer;
+        }
 
-  /* Hover pop-out effects for cards and table rows */
-  .card, table tbody tr, .project:hover {
-    transition: all 0.3s ease;
-  }
-  .card:hover, table tbody tr:hover, .project:hover {
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    transform: translateY(-3px);
-  }
+        .nav-link:hover {
+            color: #6a11cb !important;
+        }
 
-  /* Section styles */
-  section {
-    padding: 30px 15px;
-    background-color: #fff;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
+        .btn-custom-purple {
+            background-color: #6a11cb;
+            color: #fff;
+            border: none;
+        }
 
-  /* Skills cards styling */
-  #skills .card {
-    height: 100%;
-  }
-  /* Projects hover effects */
-  .project {
-    cursor: pointer;
-  }
+        .btn-custom-purple:hover {
+            background-color: #590ea3;
+            color: #fff;
+        }
 
-  /* Loader spinner */
-  #spinner {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
-  .spinner {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #007bff;
-    border-radius: 50%;
-    width: 60px; height: 60px;
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+        .modal-header.bg-primary {
+            background-color: #6a11cb;
+        }
 
-  /* Bonus Theme Styles */
-  body.light-theme {
-    background-color: #ffffff;
-    color: #000;
-  }
-  body.dark-theme {
-    background-color: #222;
-    color: #000;
-  }
-.custom-box {
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+        /* Hover pop-out effects for cards and table rows */
+        .card,
+        table tbody tr,
+        .project {
+            transition: all 0.3s ease;
+        }
 
-</style>
+        .card:hover,
+        table tbody tr:hover,
+        .project:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Section styles */
+        section {
+            padding: 30px 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skills cards styling */
+        #skills .card {
+            height: 100%;
+        }
+
+        /* Projects hover effects */
+        .project {
+            cursor: pointer;
+        }
+
+        /* Loader spinner */
+        #spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #007bff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Bonus Theme Styles */
+        body.light-theme {
+            background-color: #ffffff;
+            color: #000;
+        }
+
+        body.dark-theme {
+            background-color: #222;
+            color: #000;
+        }
+
+        .custom-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skills list item styles */
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .skill-item .skill-text {
+            flex-grow: 1;
+            cursor: pointer;
+        }
+
+        .skill-item .skill-text:hover {
+            color: #6a11cb;
+        }
+
+        .skill-item .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-sm-custom {
+            padding: 2px 8px;
+            font-size: 0.85rem;
+        }
+
+        /* Sort buttons */
+        .sort-buttons {
+            margin-bottom: 20px;
+        }
+
+        /* Error message */
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
 </head>
+
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
-
-<!-- Loader -->
-<div id="spinner">
-  <div class="spinner"></div>
-</div>
-
-<!-- Header with gradient -->
-<header class="header-gradient sticky-top text-center" id="header">
-  <h1>Rudy Ochoa</h1>
-  <h2>Personal Portfolio</h2>
-</header>
-
-<!-- Navigation Bar with Bootstrap -->
-<nav id="navbar" class="navbar navbar-expand-lg navbar-dark stick-top bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#introduction">About Me</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav gap-3">
-        <li class="nav-item"><a class="nav-link" href="#introduction">Introduction</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education & Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+    <!-- Loader -->
+    <div id="spinner">
+        <div class="spinner"></div>
     </div>
-    <a id="downloadBtn" class="btn btn-custom-purple ms-3" href="https://profile.indeed.com/p/rudyo-h8rcht0" target="_blank">Download Resume</a>
-    <!-- Theme toggle button (Bonus) -->
-    <button id="themeToggleBtn" class="btn btn-outline-light ms-3">Toggle Theme</button>
-  </div>
-</nav>
-<!-- Main Content -->
-<main class="container my-4" id="main-content">
-  
-  <section id="greeting-section" class="mb-5">
-    <div class="text-center">
-      <h3 id="greeting"></h3>
-    </div>
-  </section>
-  <!-- Introduction -->
-  <section id="introduction" class="mb-5">
-    <div class="text-center">
-      <h3>Introduction</h3>
-      <p class="lead">Hi! My Name is Rodolfo Ochoa but I go by Rudy for short. I am a student at NAU studying Cyber Security.</p>
-    </div>
-  </section>
 
-  <!-- Skills -->
-  <section id="skills" class="mb-5">
-    <h3 class="text-center mb-4">Skills</h3>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm hover-shadow">
-          <div class="card-">
-            <h4 class="card-title text-center">Technical Skills</h4>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cybersecurity</li>
-              <li class="list-group-item">Modeling</li>
-              <li class="list-group-item">Texturing</li>
-              <li class="list-group-item">Game Development</li>
-            </ul>
-          </div>
+    <!-- Header with gradient -->
+    <header class="header-gradient sticky-top text-center" id="header">
+        <h1>Rudy Ochoa</h1>
+        <h2>Personal Portfolio</h2>
+    </header>
+
+    <!-- Navigation Bar with Bootstrap -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark stick-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#introduction">About Me</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-3" id="dynamic-nav">
+                    <!-- Navigation items will be dynamically generated here -->
+                </ul>
+            </div>
+            <a id="downloadBtn" class="btn btn-custom-purple ms-3" href="https://profile.indeed.com/p/rudyo-h8rcht0"
+                target="_blank">Download Resume</a>
+            <!-- Theme toggle button (Bonus) -->
+            <button id="themeToggleBtn" class="btn btn-outline-light ms-3">Toggle Theme</button>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm hover-shadow">
-          <div class="card-body">
-            <h4 class="card-title text-center">Creative Skills</h4>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Drawing</li>
-              <li class="list-group-item">3D Modeling</li>
-            </ul>
-          </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4" id="main-content">
+        <section id="greeting-section" class="mb-5">
+            <div class="text-center">
+                <h3 id="greeting"></h3>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section id="introduction" class="mb-5">
+            <div class="text-center">
+                <h3>Introduction</h3>
+                <p class="lead">Hi! My Name is Rodolfo Ochoa but I go by Rudy for short. I am a student at NAU studying
+                    Cyber Security.</p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="mb-5">
+            <h3 class="text-center mb-4">Skills</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm hover-shadow">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Technical Skills</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Cybersecurity</li>
+                                <li class="list-group-item">Modeling</li>
+                                <li class="list-group-item">Texturing</li>
+                                <li class="list-group-item">Game Development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm hover-shadow">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Creative Skills</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Drawing</li>
+                                <li class="list-group-item">3D Modeling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm hover-shadow">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Interpersonal Skills</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Teamwork</li>
+                                <li class="list-group-item">Communication</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Experience -->
+        <section id="education" class="mb-5">
+            <h3 class="text-center mb-4">Education and Experience</h3>
+            <div class="table-responsive" id="experienceTableContainer">
+                <!-- Table will be generated dynamically -->
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="mb-5">
+            <h3 class="text-center mb-4">Projects Showcase</h3>
+            
+            <!-- Sort Buttons -->
+            <div class="sort-buttons text-center">
+                <button id="sortAscBtn" class="btn btn-outline-primary me-2">Sort by Deadline (Ascending)</button>
+                <button id="sortDescBtn" class="btn btn-outline-primary">Sort by Deadline (Descending)</button>
+            </div>
+
+            <div class="row g-4" id="projectsContainer">
+                <!-- Projects will be generated dynamically -->
+            </div>
+        </section>
+
+        <!-- Download Counter -->
+        <section class="mb-5 text-center">
+            <h4>Resume Download Count: <span id="downloadCountDisplay">0</span></h4>
+        </section>
+
+        <!-- Skills Input Form -->
+        <section id="skills-input" class="mb-5">
+            <h3 class="text-center mb-3">Manage Skills</h3>
+            <div class="d-flex justify-content-center">
+                <div style="max-width: 500px; width: 100%;">
+                    <div class="input-group">
+                        <input type="text" id="skillInput" class="form-control" placeholder="Enter a skill" />
+                        <button class="btn btn-primary" id="addSkillBtn">Add Skill</button>
+                    </div>
+                    <div class="error-message" id="errorMessage"></div>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <h5>Skills List:</h5>
+                <div id="skillsList" style="max-width: 500px; margin: 0 auto;">
+                    <!-- Skills will be added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Modals for projects (Bonus) -->
+        <!-- Project 1 Modal -->
+        <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="project1ModalLabel">Animal Crossing Model Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <h6>Project Overview</h6>
+                        <p>This project involved creating a detailed 3D model inspired by Animal Crossing for the
+                            Nintendo 3DS. It includes detailed texturing and modeling using Blender.</p>
+                        <h6>Tools Used</h6>
+                        <ul>
+                            <li>Blender</li>
+                            <li>Subsurface Modeling</li>
+                            <li>UV Mapping</li>
+                            <li>Texturing</li>
+                        </ul>
+                        <h6>Challenges & Notes</h6>
+                        <p>Achieving the cartoonish style while maintaining proper topology and UV mapping was
+                            challenging. Optimization for real-time rendering was also a consideration.</p>
+                        <img src="IMG_1268.png" class="img-fluid rounded mt-3" alt="Animal Crossing model screenshot" />
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm hover-shadow">
-          <div class="card-body">
-            <h4 class="card-title text-center">Interpersonal Skills</h4>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Teamwork</li>
-              <li class="list-group-item">Communication</li>
-            </ul>
-          </div>
+
+        <!-- Project 2 Modal -->
+        <div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="project2ModalLabel">Game Development Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Project Overview</h6>
+                        <p>This was what I was working on before the files corrupted. It was going to be a
+                            cyberpunk-style game, and I was able to kitbash the model myself. All of it was made using
+                            Unity.</p>
+                        <h6>Tools Used</h6>
+                        <ul>
+                            <li>Blender</li>
+                            <li>Unity</li>
+                            <li>Visual Studio</li>
+                        </ul>
+                        <h6>Challenges & Notes</h6>
+                        <p>It was my first time making things from scratch, so it was a bit hard to get used to and edit
+                            everything to work together.</p>
+                        <img src="IMG_69.jpg" class="img-fluid rounded mt-3" alt="character model" />
+                        <video class="rounded" width="320" height="240" controls>
+                            <source src="IMG_6917.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Education & Experience -->
-  <section id="education" class="mb-5">
-    <h3 class="text-center mb-4">Education and Experience</h3>
-    <div class="table-responsive" id="experienceTableContainer">
-      <!-- Table will be generated dynamically -->
-    </div>
-  </section>
+        <!-- Contact -->
+        <section id="contact" class="mb-5">
+            <div class="row-center">
+                <h3 class="text-center mb-4">Contact Information</h3>
+                <div class="custom-box mx-auto" style="max-width: 600px;">
+                    <p><strong>Gmail (Personal):</strong> <a
+                            href="mailto:ochoarudy02@gmail.com">ochoarudy02@gmail.com</a></p>
+                    <p><strong>Nau Gmail:</strong> <a href="mailto:Ro374@nau.edu">Ro374@nau.edu</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ro374-dot"
+                            target="_blank">https://github.com/ro374-dot</a></p>
+                </div>
+            </div>
+        </section>
 
-  <!-- Projects -->
-  <section id="projects" class="mb-5">
-    <h3 class="text-center mb-4">Projects Showcase</h3>
-    <div class="row g-4" id="projectsContainer">
-      <!-- Projects will be generated dynamically -->
-    </div>
-  </section>
+        <!-- About Me Video -->
+        <section id="about" class="mb-5">
+            <div class="row-center">
+                <h3 class="text-center mb-4">About Me</h3>
+                <div class="d-flex justify-content-center">
+                    <video class="rounded" width="320" height="240" controls>
+                        <source src="Intro.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <!-- Download Counter -->
-  <section class="mb-5 text-center">
-    <h4>Resume Download Count: <span id="downloadCountDisplay">0</span></h4>
-  </section>
+    <!-- Footer with gradient -->
+    <footer class="footer-gradient">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Rudy Ochoa</p>
+        </div>
+    </footer>
 
-  <!-- Skills Input Form -->
-  <section id="skills-input" class="mb-5">
-    <h3 class="text-center mb-3">Add a Skill</h3>
-    <div class="d-flex justify-content-center">
-      <input type="text" id="skillInput" class="form-control" placeholder="Enter a skill" style="max-width: 300px;" />
-      <button class="btn btn-primary ms-2" id="addSkillBtn">Add Skill</button>
-    </div>
-    <div class="mt-3 text-center">
-      <h5>Skills List:</h5>
-      <ul id="skillsList" class="list-group list-group-flush" style="max-width: 400px; margin: 0 auto;">
-        <!-- Skills will be added here -->
-      </ul>
-    </div>
-  </section>
-<!-- Modals for projects (Bonus) -->
-<!-- Project 1 Modal -->
-<div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <!-- Modal Header -->
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="project1ModalLabel">Animal Crossing Model Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <!-- Modal Body -->
-      <div class="modal-body">
-        <h6>Project Overview</h6>
-        <p>This project involved creating a detailed 3D model inspired by Animal Crossing for the Nintendo 3DS. It includes detailed texturing and modeling using Blender.</p>
-        <h6>Tools Used</h6>
-        <ul>
-          <li>Blender</li>
-          <li>Subsurface Modeling</li>
-          <li>UV Mapping</li>
-          <li>Texturing</li>
-        </ul>
-        <h6>Challenges & Notes</h6>
-        <p>Achieving the cartoonish style while maintaining proper topology and UV mapping was challenging. Optimization for real-time rendering was also a consideration.</p>
-        <img src="IMG_1268.png" class="img-fluid rounded mt-3" alt="Animal Crossing model screenshot"/>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Project 2 Modal -->
-<div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="project2ModalLabel">Game Development Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h6>Project Overview</h6>
-        <p>This was what I was working on before the files corrupted. It was going to be a cyberpunk-style game, and I was able to kitbash the model myself. All of it was made using Unity.</p>
-        <h6>Tools Used</h6>
-        <ul>
-          <li>Blender</li>
-          <li>Unity</li>
-          <li>Visual Studio</li>
-        </ul>
-        <h6>Challenges & Notes</h6>
-        <p>It was my first time making things from scratch, so it was a bit hard to get used to and edit everything to work together.</p>
-        <img src="IMG_69.jpg" class="img-fluid rounded mt-3" alt="character model"/>
-        <video class="rounded" width="320" height="240" controls>
-          <source src="IMG_6917.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Hide loader on window load
+            $(window).on('load', function () {
+                $('#spinner').fadeOut();
+            });
 
-<!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            // =============================================
+            // Step 1: Dynamic Skills Form with Validation
+            // =============================================
+            let skills = [];
 
-<script>
-  // Hide loader on window load
-  window.addEventListener('load', () => {
-    document.getElementById('spinner').style.display = 'none';
-  });
+            // Load skills from localStorage
+            const savedSkills = localStorage.getItem('skills');
+            if (savedSkills) {
+                skills = JSON.parse(savedSkills);
+                updateSkillsList();
+            }
 
-  // Skills array
-  let skills = [];
+            // Validation callback
+            function validateSkill(skill, callback) {
+                if (skill === '') {
+                    callback(false, 'Please enter a skill.');
+                    return;
+                }
+                if (skills.some(s => s.toLowerCase() === skill.toLowerCase())) {
+                    callback(false, 'This skill already exists.');
+                    return;
+                }
+                callback(true, '');
+            }
 
-  // Load skills from localStorage on page load
-  const savedSkills = localStorage.getItem('skills');
-  if (savedSkills) {
-    skills = JSON.parse(savedSkills);
-    updateSkillsList();
-  }
+            // Function to update skills list display and save to localStorage
+            function updateSkillsList() {
+                const $$skillsList =$$ ('#skillsList');
+                $skillsList.empty();
 
-  // Function to update skills list display and save to localStorage
-  function updateSkillsList() {
-    const list = document.getElementById('skillsList');
-    list.innerHTML = '';
-    skills.forEach((skill) => {
-      const li = document.createElement('li');
-      li.className = 'list-group-item';
-      li.textContent = skill;
-      list.appendChild(li);
-    });
-    // Save to localStorage
-    localStorage.setItem('skills', JSON.stringify(skills));
-  }
+                skills.forEach((skill, index) => {
+                    const $$skillItem =$$ ('<div>')
+                        .addClass('skill-item')
+                        .hide();
 
-  // Add event listener for adding skills
-  document.getElementById('addSkillBtn').addEventListener('click', () => {
-    const skillInput = document.getElementById('skillInput');
-    const skill = skillInput.value.trim();
-    if (skill !== '') {
-      skills.push(skill);
-      skillInput.value = '';
-      updateSkillsList();
-    }
-  });
+                    const $$skillText =$$ ('<span>')
+                        .addClass('skill-text')
+                        .text(skill)
+                        .attr('data-index', index);
 
-  // Arrays for projects
-  const projectTitles = ['Animal Crossing Model', 'Game Development'];
-  const projectDescriptions = [
-    'Texturing and modeling...',
-    'Game project info...',
-  ];
-  const projectDeadlines = [
-    '2024-12-31',
-    '2023-10-01',
-  ];
+                    const $$btnGroup =$$ ('<div>')
+                        .addClass('btn-group');
 
-  // Generate project listings
-  const projectsContainer = document.getElementById('projectsContainer');
-  const today = new Date();
+                    const $$editBtn =$$ ('<button>')
+                        .addClass('btn btn-sm btn-warning btn-sm-custom')
+                        .text('Edit')
+                        .attr('data-index', index);
 
-  for (let i = 0; i < projectTitles.length; i++) {
-    const projectDiv = document.createElement('div');
-    projectDiv.className = 'col-md-6';
+                    const $$deleteBtn =$$ ('<button>')
+                        .addClass('btn btn-sm btn-danger btn-sm-custom')
+                        .text('Delete')
+                        .attr('data-index', index);
 
-    const cardDiv = document.createElement('div');
-    cardDiv.className = 'card hover-shadow project';
-    cardDiv.setAttribute('data-bs-toggle', 'modal');
-    // Assign modal target based on project
-    cardDiv.setAttribute('data-bs-target', i === 0 ? '#project1Modal' : '#project2Modal');
+                    $$btnGroup.append($$ editBtn, $deleteBtn);
+                    $$skillItem.append($$ skillText, $btnGroup);
+                    $$skillsList.append($$ skillItem);
+                    $skillItem.fadeIn(400);
+                });
 
-    const cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
+                // Save to localStorage
+                localStorage.setItem('skills', JSON.stringify(skills));
+            }
 
-    const title = document.createElement('h4');
-    title.className = 'card-title';
-    title.textContent = projectTitles[i];
+            // Add skill
+            $('#addSkillBtn').on('click', function () {
+                const skill = $('#skillInput').val().trim();
+                const $$errorMessage =$$ ('#errorMessage');
 
-    const desc = document.createElement('p');
-    desc.className = 'card-text';
-    desc.textContent = projectDescriptions[i];
+                validateSkill(skill, function (isValid, message) {
+                    if (isValid) {
+                        skills.push(skill);
+                        $('#skillInput').val('');
+                        $errorMessage.hide();
+                        updateSkillsList();
+                    } else {
+                        $errorMessage.text(message).fadeIn();
+                    }
+                });
+            });
 
-    const deadlineDate = new Date(projectDeadlines[i]);
-    const statusDiv = document.createElement('div');
-    statusDiv.className = 'mt-2 fw-bold';
+            // Allow Enter key to add skill
+            $('#skillInput').on('keypress', function (e) {
+                if (e.which === 13) {
+                    $('#addSkillBtn').click();
+                }
+            });
 
-    if (deadlineDate > today) {
-      statusDiv.textContent = 'Status: Ongoing';
-    } else {
-      statusDiv.textContent = 'Status: Completed';
-    }
+            // Edit skill (click on skill text)
+            $(document).on('click', '.skill-text', function () {
+                const index = $(this).data('index');
+                const currentSkill = skills[index];
+                const newSkill = prompt('Edit skill:', currentSkill);
 
-    // Append elements
-    cardBody.appendChild(title);
-    cardBody.appendChild(desc);
-    cardBody.appendChild(statusDiv);
-    cardDiv.appendChild(cardBody);
-    projectDiv.appendChild(cardDiv);
-    projectsContainer.appendChild(projectDiv);
-  }
+                if (newSkill !== null && newSkill.trim() !== '') {
+                    const trimmedSkill = newSkill.trim();
+                    // Check if the new skill name already exists (excluding current skill)
+                    const isDuplicate = skills.some((s, i) => i !== index && s.toLowerCase() === trimmedSkill.toLowerCase());
+                    
+                    if (isDuplicate) {
+                        alert('This skill already exists.');
+                    } else {
+                        skills[index] = trimmedSkill;
+                        updateSkillsList();
+                    }
+                }
+            });
 
-  // Resume download counter
-  let downloadCount = 0;
-  const downloadCountDisplay = document.getElementById('downloadCountDisplay');
+            // Delete skill
+            $(document).on('click', '.btn-danger', function () {
+                const index = $(this).data('index');
+                const $$skillItem =$$ (this).closest('.skill-item');
+                
+                $skillItem.slideUp(300, function () {
+                    skills.splice(index, 1);
+                    updateSkillsList();
+                });
+            });
 
-  document.getElementById('downloadBtn').addEventListener('click', () => {
-    downloadCount++;
-    downloadCountDisplay.textContent = downloadCount;
-  });
+            // =============================================
+            // Step 2: Dynamic Navigation Menu
+            // =============================================
+            const navItems = [
+                { text: 'Introduction', target: '#introduction' },
+                { text: 'Skills', target: '#skills' },
+                { text: 'Education', target: '#education' },
+                { text: 'Projects', target: '#projects' },
+                { text: 'Contact', target: '#contact' }
+            ];
 
-  // Generate Education & Experience table dynamically
-  const experienceData = [
-    { institution: 'Local Government IT Department', position: 'Intern', duration: 'Junior Year of High School' },
-    { institution: 'Northern Arizona University (NAU)', position: 'Student (Cybersecurity)', duration: 'Starting 3rd Year' }
-  ];
+            const $$dynamicNav =$$ ('#dynamic-nav');
+            navItems.forEach(item => {
+                const $$li =$$ ('<li>').addClass('nav-item');
+                const $$a =$$ ('<a>')
+                    .addClass('nav-link')
+                    .text(item.text)
+                    .attr('href', item.target)
+                    .on('click', function (e) {
+                        e.preventDefault();
+                        const target = $(item.target);
+                        if (target.length) {
+                            $('html, body').animate({
+                                scrollTop: target.offset().top - 100
+                            }, 800);
+                        }
+                    });
+                $$li.append($$ a);
+                $$dynamicNav.append($$ li);
+            });
 
-  const experienceTableContainer = document.getElementById('experienceTableContainer');
+            // =============================================
+            // Step 3: Projects Section with Sorting
+            // =============================================
+            const projects = [
+                {
+                    title: 'Animal Crossing Model',
+                    description: 'This project involved creating a detailed 3D model inspired by Animal Crossing. It includes detailed texturing and modeling using Blender.',
+                    deadline: new Date('2024-12-31'),
+                    imageURL: 'IMG_1268.png',
+                    modalTarget: '#project1Modal'
+                },
+                {
+                    title: 'Game Development',
+                    description: 'A cyberpunk-style game project created using Unity and Blender. Featured custom kitbashed models and immersive gameplay mechanics.',
+                    deadline: new Date('2023-10-01'),
+                    imageURL: 'IMG_69.jpg',
+                    modalTarget: '#project2Modal'
+                }
+            ];
 
-  const table = document.createElement('table');
-  table.className = 'table table-bordered';
+            function renderProjects(projectsArray) {
+                const $$projectsContainer =$$ ('#projectsContainer');
+                $projectsContainer.empty();
 
-  const thead = document.createElement('thead');
-  thead.className = 'table-secondary';
-  const headerRow = document.createElement('tr');
-  ['Institution / Company', 'Position / Degree', 'Duration'].forEach(text => {
-    const th = document.createElement('th');
-    th.textContent = text;
-    headerRow.appendChild(th);
-  });
-  thead.appendChild(headerRow);
-  table.appendChild(thead);
+                const today = new Date();
 
-  const tbody = document.createElement('tbody');
-  experienceData.forEach(entry => {
-    const row = document.createElement('tr');
-    Object.values(entry).forEach(val => {
-      const td = document.createElement('td');
-      td.textContent = val;
-      row.appendChild(td);
-    });
-    tbody.appendChild(row);
-  });
-  table.appendChild(tbody);
-  experienceTableContainer.appendChild(table);
+                for (let i = 0; i < projectsArray.length; i++) {
+                    const project = projectsArray[i];
+                    
+                    const $$projectDiv =$$ ('<div>')
+                        .addClass('col-md-6');
 
-  // Theme toggle button
-  const themeBtn = document.getElementById('themeToggleBtn');
-  let currentTheme = 'light'; // default
-  themeBtn.addEventListener('click', () => {
-    if (currentTheme === 'light') {
-      document.body.classList.remove('light-theme');
-      document.body.classList.add('dark-theme');
-      currentTheme = 'dark';
-    } else {
-      document.body.classList.remove('dark-theme');
-      document.body.classList.add('light-theme');
-      currentTheme = 'light';
-    }
-  });
-</script>
-   <!-- Contact -->
-  <section id="contact" class="mb-5">
-    <div class="row-center"">
-      <h3 class="text-center mb-4">Contact Information</h3>
-      <div class="custom-box mx-auto" style="max-width: 600px;">
-        <p><strong>Gmail (Personal):</strong> <a href="mailto:ochoarudy02@gmail.com">ochoarudy02@gmail.com</a></p>
-        <p><strong>Nau Gmail:</strong> <a href="mailto:Ro374@nau.edu">Ro374@nau.edu</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/ro374-dot" target="_blank">https://github.com/ro374-dot</a></p>
-      </div>
-    </div>
-  </section>
-  <!-- About Me Video -->
-  <section id="about" class="mb-5">
-     <div class="row-center">
-      <h3 class="text-center mb-4">About Me</h3>
-      <div class="d-flex justify-content-center">
-        <video class="rounded" width="320" height="240" controls>
-          <source src="Intro.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </section>
-</main>
-<!-- Footer with gradient -->
-<footer class="footer-gradient">
-  <div class="container text-center">
-    <p class="mb-0">© 2025 Rudy Ochoa</p>
-  </div>
-</footer>
-<script src="homework/app.js"></script>
+                    const $$cardDiv =$$ ('<div>')
+                        .addClass('card hover-shadow project')
+                        .attr('data-bs-toggle', 'modal')
+                        .attr('data-bs-target', project.modalTarget);
+
+                    const $$cardBody =$$ ('<div>')
+                        .addClass('card-body');
+
+                    // Project image
+                    const $$img =$$ ('<img>')
+                        .addClass('card-img-top')
+                        .attr('src', project.imageURL)
+                        .attr('alt', project.title)
+                        .css('height', '200px')
+                        .css('object-fit', 'cover');
+
+                    const $$title =$$ ('<h4>')
+                        .addClass('card-title mt-3')
+                        .text(project.title);
+
+                    const $$desc =$$ ('<p>')
+                        .addClass('card-text')
+                        .text(project.description);
+
+                    const $$deadline =$$ ('<p>')
+                        .addClass('text-muted')
+                        .html('<strong>Deadline:</strong> ' + project.deadline.toLocaleDateString());
+
+                    const $$status =$$ ('<div>')
+                        .addClass('mt-2 fw-bold');
+
+                    if (project.deadline > today) {
+                        $status.text('Status: Ongoing').addClass('text-primary');
+                    } else {
+                        $status.text('Status: Completed').addClass('text-success');
+                    }
+
+                    $$cardBody.append($$ title, $$desc,$$ deadline, $status);
+                    $$cardDiv.append($$ img, $cardBody);
+                    $$projectDiv.append($$ cardDiv);
+                    $$projectsContainer.append($$ projectDiv);
+                }
+            }
+
+            // Initial render
+            renderProjects(projects);
+
+            // Sort by deadline ascending
+            $('#sortAscBtn').on('click', function () {
+                const sortedProjects = [...projects].sort((a, b) => a.deadline - b.deadline);
+                renderProjects(sortedProjects);
+            });
+
+            // Sort by deadline descending
+            $('#sortDescBtn').on('click', function () {
+                const sortedProjects = [...projects].sort((a, b) => b.deadline - a.deadline);
+                renderProjects(sortedProjects);
+            });
+
+            // =============================================
+            // Resume Download Counter
+            // =============================================
+            let downloadCount = 0;
+            $('#downloadBtn').on('click', function () {
+                downloadCount++;
+                $('#downloadCountDisplay').text(downloadCount);
+            });
+
+            // =============================================
+            // Education & Experience Table
+            // =============================================
+            const experienceData = [
+                {
+                    institution: 'Local Government IT Department',
+                    position: 'Intern',
+                    duration: 'Junior Year of High School'
+                },
+                {
+                    institution: 'Northern Arizona University (NAU)',
+                    position: 'Student (Cybersecurity)',
+                    duration: 'Starting 3rd Year'
+                }
+            ];
+
+            const $$table =$$ ('<table>').addClass('table table-bordered');
+            const $$thead =$$ ('<thead>').addClass('table-secondary');
+            const $$headerRow =$$ ('<tr>');
+
+            ['Institution / Company', 'Position / Degree', 'Duration'].forEach(text => {
+                $$headerRow.append($$ ('<th>').text(text));
+            });
+
+            $$thead.append($$ headerRow);
+            $$table.append($$ thead);
+
+            const $$tbody =$$ ('<tbody>');
+            experienceData.forEach(entry => {
+                const $$row =$$ ('<tr>');
+                Object.values(entry).forEach(val => {
+                    $$row.append($$ ('<td>').text(val));
+                });
+                $$tbody.append($$ row);
+            });
+
+            $$table.append($$ tbody);
+            $('#experienceTableContainer').append($table);
+
+            // =============================================
+            // Theme Toggle
+            // =============================================
+            let currentTheme = 'light';
+            $('#themeToggleBtn').on('click', function () {
+                if (currentTheme === 'light') {
+                    $('body').removeClass('light-theme').addClass('dark-theme');
+                    currentTheme = 'dark';
+                } else {
+                    $('body').removeClass('dark-theme').addClass('light-theme');
+                    currentTheme = 'light';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
