@@ -3,7 +3,8 @@ console.log('Hello World!'); // Verify integration
 // Variables
 const ownerName = "Rudy";
 let hasDownloadedResume = false;
-
+let downloadCount = 0;
+const $downloadCountDisplay = $('#downloadCountDisplay');
 // Function to generate greeting message
 function showGreeting(name) {
   return `Hello, my name is ${name}! Welcome to my portfolio!`;
@@ -36,6 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Display greeting message
   displayGreeting();
 
+  $('#downloadBtn').on('click', () => {
+    downloadCount++;
+    $downloadCountDisplay.text(downloadCount);
+  });
   // Attach click event to the resume download button
   const downloadBtn = document.getElementById('downloadBtn');
   if (downloadBtn) {
