@@ -47,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!hasDownloadedResume) {
         setTimeout(() => {
           alert("Your resume is downloaded successfully!");
-        }, 2000);
-        hasDownloadedResume = true; // prevent multiple alerts
+        }, 2000);// prevent multiple alerts
       }
 
       // Increment download count and update display
