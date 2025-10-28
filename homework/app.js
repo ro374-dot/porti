@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Display greeting message
   displayGreeting();
+  let downloadCount = 0;
+  const $downloadCountDisplay = $('#downloadCountDisplay');
 
   // Attach click event to the resume download button
   const downloadBtn = document.getElementById('downloadBtn');
@@ -46,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
           alert("Your resume is downloaded successfully!");
         }, 2000);
         hasDownloadedResume = true; // prevent multiple alerts
+        downloadCount++;
+        $downloadCountDisplay.text(downloadCount);
       }
     });
   }
